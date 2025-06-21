@@ -56,7 +56,10 @@
                 </div>
                 <table class="table table-striped  table-hover table-responsive table-bordered">
                 <?php
-                    $con = mysqli_connect("localhost", "root", "", "concertdb") or die("Error: " . mysqli_error($conn));
+                    $con = mysqli_connect("localhost", "root", "", "concertdb");
+                    if (!$con) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
                     mysqli_query($con, "SET NAMES 'utf8' ");
 
                     // ตรวจสอบว่ามีการส่งคำค้นหามาหรือไม่
